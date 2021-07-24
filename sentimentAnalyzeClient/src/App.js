@@ -2,6 +2,10 @@ import './bootstrap.min.css';
 import './App.css';
 import EmotionTable from './EmotionTable.js';
 import React from 'react';
+import { Helmet } from 'react-helmet';
+
+const title = 'Sentiment Analyzer';
+
 
 class App extends React.Component {
   state = {innercomp:<textarea rows="4" cols="50" id="textinput"/>,
@@ -50,7 +54,7 @@ class App extends React.Component {
         } else if (data === "negative"){
           output = <div style={{color:"red",fontSize:20}}>{data}</div>
         } else {
-          output = <div style={{color:"orange",fontSize:20}}>{data}</div>
+          output = <div style={{color:"yellow",fontSize:20}}>{data}</div>
         }
         this.setState({sentimentOutput:output});
       })});
@@ -75,6 +79,9 @@ class App extends React.Component {
   render() {
     return (  
       <div className="App">
+          <Helmet>
+        <title>CoderGuides | Home</title>
+      </Helmet>
       <button className="btn btn-info" onClick={this.renderTextArea}>Text</button>
         <button className="btn btn-dark"  onClick={this.renderTextBox}>URL</button>
         <br/><br/>
